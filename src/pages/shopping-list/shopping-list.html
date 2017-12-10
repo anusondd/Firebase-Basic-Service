@@ -1,0 +1,29 @@
+
+<ion-header>
+
+  <ion-navbar color='primary'>
+    <ion-title >shopping-list</ion-title>
+    <ion-buttons end>
+        <button navPush="AddshoppingListPage"  ion-button>
+          <ion-icon name="add"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-input type="text" placeholder="Search" [(ngModel)]="search" (keyup)="searchItem(search)"></ion-input>
+  </ion-item>
+  {{search}}
+  <ion-list>
+    <ion-list-header>item</ion-list-header>
+    <ion-item *ngFor="let item of itemList | async" 
+    detail-push navPush="EditshoppingListPage" [navParams]="{item : item}"> 
+      {{item.name}}
+    </ion-item>
+  </ion-list>
+
+</ion-content>
